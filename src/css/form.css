@@ -1,10 +1,9 @@
 .feedback-form {
   display: flex;
-  max-width: 408px;
+  width: 408px;
   flex-direction: column;
   flex-wrap: nowrap;
-  padding-top: 24px;
-  padding-left: 24px;
+  padding: 24px 24px;
   gap: 8px;
   color: #2e2f42;
   font-family: Montserrat;
@@ -15,13 +14,15 @@
 }
 
 input {
-  width: 360px;
+  width: 344px;
   height: 40px;
+  padding-left: 16px;
 }
 
 textarea {
   width: 360px;
   height: 80px;
+  resize: none;
 }
 
 button {
