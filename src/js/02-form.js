@@ -1,5 +1,14 @@
 const FEEDBACK_DATA_KEY = 'feedback';
 const form = document.querySelector('.feedback-form');
+try {
+  const initialFormData = JSON.parse(localStorage.getItem(FEEDBACK_DATA_KEY));
+  Array.from(form.elements).forEach(element => {
+    const storageValue = initialFormData[element.name];
+    if (storageValue) {
+      element.value = storageValue;
+    }
+  });
+} catch (e) {}
 
 form.addEventListener('input', () => {
   const formData = new FormData(form);
@@ -27,15 +36,3 @@ form.addEventListener('submit', event => {
   localStorage.removeItem(FEEDBACK_DATA_KEY);
   form.reset();
 });
-
-try {
-  const initialFormData = JSON.parse(localStorage.getItem(FEEDBACK_DATA_KEY));
-  Array.from(form.elements).forEach(element => {
-    const storageValue = initialFormData[element.name];
-    if (storageValue) {
-      element.value = storageValue;
-    }
-  });
-} catch (e) {
-  console.error('PARSE STORAGE FORM ERROR');
-}
