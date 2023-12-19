@@ -82,7 +82,23 @@ container.innerHTML = images.reduce(
 </li>`,
   ''
 );
-new SimpleLightbox('.gallery a', {
+const styleRef = new SimpleLightbox('.gallery a', {
   captionDelay: 250,
   captionsData: 'alt',
+});
+
+styleRef.on('shown.simplelightbox', function () {
+  const modal = document.querySelector('.sl-wrapper');
+  modal.style.backgroundColor = 'rgba(46, 47, 66, 0.80)';
+
+  const closeButton = document.querySelector('.sl-close');
+  closeButton.style.color = '#fff';
+
+  const counter = document.querySelector('.sl-counter');
+  counter.style.color = '#fff';
+
+  const navigationButtons = document.querySelectorAll('.sl-navigation button');
+  navigationButtons.forEach(button => {
+    button.style.color = '#fff';
+  });
 });
